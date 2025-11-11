@@ -1,0 +1,732 @@
+File {
+    shebang: None,
+    attrs: [],
+    items: [
+        Item::Use {
+            attrs: [],
+            vis: Visibility::Inherited,
+            use_token: Use,
+            leading_colon: None,
+            tree: UseTree::Path(
+                UsePath {
+                    ident: Ident {
+                        sym: anchor_lang,
+                        span: bytes(5..16),
+                    },
+                    colon2_token: PathSep,
+                    tree: UseTree::Path(
+                        UsePath {
+                            ident: Ident {
+                                sym: prelude,
+                                span: bytes(18..25),
+                            },
+                            colon2_token: PathSep,
+                            tree: UseTree::Glob(
+                                UseGlob {
+                                    star_token: Star,
+                                },
+                            ),
+                        },
+                    ),
+                },
+            ),
+            semi_token: Semi,
+        },
+        Item::Macro {
+            attrs: [],
+            ident: None,
+            mac: Macro {
+                path: Path {
+                    leading_colon: None,
+                    segments: [
+                        PathSegment {
+                            ident: Ident {
+                                sym: declare_id,
+                                span: bytes(211..221),
+                            },
+                            arguments: PathArguments::None,
+                        },
+                    ],
+                },
+                bang_token: Not,
+                delimiter: MacroDelimiter::Paren(
+                    Paren,
+                ),
+                tokens: TokenStream [
+                    Literal {
+                        lit: "FWkvTDXiXaaFbFSKVzewnjzb52rryC5h9atifJuZepU8",
+                        span: bytes(223..269),
+                    },
+                ],
+            },
+            semi_token: Some(
+                Semi,
+            ),
+        },
+        Item::Struct {
+            attrs: [
+                Attribute {
+                    pound_token: Pound,
+                    style: AttrStyle::Outer,
+                    bracket_token: Bracket,
+                    meta: Meta::Path {
+                        leading_colon: None,
+                        segments: [
+                            PathSegment {
+                                ident: Ident {
+                                    sym: account,
+                                    span: bytes(275..282),
+                                },
+                                arguments: PathArguments::None,
+                            },
+                        ],
+                    },
+                },
+            ],
+            vis: Visibility::Public(
+                Pub,
+            ),
+            struct_token: Struct,
+            ident: Ident {
+                sym: VaultAccount,
+                span: bytes(295..307),
+            },
+            generics: Generics {
+                lt_token: None,
+                params: [],
+                gt_token: None,
+                where_clause: None,
+            },
+            fields: Fields::Named {
+                brace_token: Brace,
+                named: [],
+            },
+            semi_token: None,
+        },
+        Item::Struct {
+            attrs: [
+                Attribute {
+                    pound_token: Pound,
+                    style: AttrStyle::Outer,
+                    bracket_token: Bracket,
+                    meta: Meta::Path {
+                        leading_colon: None,
+                        segments: [
+                            PathSegment {
+                                ident: Ident {
+                                    sym: account,
+                                    span: bytes(314..321),
+                                },
+                                arguments: PathArguments::None,
+                            },
+                        ],
+                    },
+                },
+            ],
+            vis: Visibility::Public(
+                Pub,
+            ),
+            struct_token: Struct,
+            ident: Ident {
+                sym: BetAccount,
+                span: bytes(334..344),
+            },
+            generics: Generics {
+                lt_token: None,
+                params: [],
+                gt_token: None,
+                where_clause: None,
+            },
+            fields: Fields::Named {
+                brace_token: Brace,
+                named: [],
+            },
+            semi_token: None,
+        },
+        Item::Mod {
+            attrs: [
+                Attribute {
+                    pound_token: Pound,
+                    style: AttrStyle::Outer,
+                    bracket_token: Bracket,
+                    meta: Meta::Path {
+                        leading_colon: None,
+                        segments: [
+                            PathSegment {
+                                ident: Ident {
+                                    sym: program,
+                                    span: bytes(351..358),
+                                },
+                                arguments: PathArguments::None,
+                            },
+                        ],
+                    },
+                },
+            ],
+            vis: Visibility::Public(
+                Pub,
+            ),
+            unsafety: None,
+            mod_token: Mod,
+            ident: Ident {
+                sym: game_escrow,
+                span: bytes(368..379),
+            },
+            content: Some(
+                (
+                    Brace,
+                    [
+                        Item::Use {
+                            attrs: [],
+                            vis: Visibility::Inherited,
+                            use_token: Use,
+                            leading_colon: None,
+                            tree: UseTree::Path(
+                                UsePath {
+                                    ident: Ident {
+                                        sym: super,
+                                        span: bytes(390..395),
+                                    },
+                                    colon2_token: PathSep,
+                                    tree: UseTree::Glob(
+                                        UseGlob {
+                                            star_token: Star,
+                                        },
+                                    ),
+                                },
+                            ),
+                            semi_token: Semi,
+                        },
+                        Item::Fn {
+                            attrs: [],
+                            vis: Visibility::Public(
+                                Pub,
+                            ),
+                            sig: Signature {
+                                constness: None,
+                                asyncness: None,
+                                unsafety: None,
+                                abi: None,
+                                fn_token: Fn,
+                                ident: Ident {
+                                    sym: initialize_vault,
+                                    span: bytes(412..428),
+                                },
+                                generics: Generics {
+                                    lt_token: None,
+                                    params: [],
+                                    gt_token: None,
+                                    where_clause: None,
+                                },
+                                paren_token: Paren,
+                                inputs: [
+                                    FnArg::Typed(
+                                        PatType {
+                                            attrs: [],
+                                            pat: Pat::Ident {
+                                                attrs: [],
+                                                by_ref: None,
+                                                mutability: None,
+                                                ident: Ident {
+                                                    sym: ctx,
+                                                    span: bytes(429..432),
+                                                },
+                                                subpat: None,
+                                            },
+                                            colon_token: Colon,
+                                            ty: Type::Path {
+                                                qself: None,
+                                                path: Path {
+                                                    leading_colon: None,
+                                                    segments: [
+                                                        PathSegment {
+                                                            ident: Ident {
+                                                                sym: Context,
+                                                                span: bytes(434..441),
+                                                            },
+                                                            arguments: PathArguments::AngleBracketed {
+                                                                colon2_token: None,
+                                                                lt_token: Lt,
+                                                                args: [
+                                                                    GenericArgument::Type(
+                                                                        Type::Path {
+                                                                            qself: None,
+                                                                            path: Path {
+                                                                                leading_colon: None,
+                                                                                segments: [
+                                                                                    PathSegment {
+                                                                                        ident: Ident {
+                                                                                            sym: InitializeVault,
+                                                                                            span: bytes(442..457),
+                                                                                        },
+                                                                                        arguments: PathArguments::None,
+                                                                                    },
+                                                                                ],
+                                                                            },
+                                                                        },
+                                                                    ),
+                                                                ],
+                                                                gt_token: Gt,
+                                                            },
+                                                        },
+                                                    ],
+                                                },
+                                            },
+                                        },
+                                    ),
+                                ],
+                                variadic: None,
+                                output: ReturnType::Type(
+                                    RArrow,
+                                    Type::Path {
+                                        qself: None,
+                                        path: Path {
+                                            leading_colon: None,
+                                            segments: [
+                                                PathSegment {
+                                                    ident: Ident {
+                                                        sym: Result,
+                                                        span: bytes(463..469),
+                                                    },
+                                                    arguments: PathArguments::AngleBracketed {
+                                                        colon2_token: None,
+                                                        lt_token: Lt,
+                                                        args: [
+                                                            GenericArgument::Type(
+                                                                Type::Tuple {
+                                                                    paren_token: Paren,
+                                                                    elems: [],
+                                                                },
+                                                            ),
+                                                        ],
+                                                        gt_token: Gt,
+                                                    },
+                                                },
+                                            ],
+                                        },
+                                    },
+                                ),
+                            },
+                            block: Block {
+                                brace_token: Brace,
+                                stmts: [
+                                    Stmt::Expr(
+                                        Expr::Call {
+                                            attrs: [],
+                                            func: Expr::Path {
+                                                attrs: [],
+                                                qself: None,
+                                                path: Path {
+                                                    leading_colon: None,
+                                                    segments: [
+                                                        PathSegment {
+                                                            ident: Ident {
+                                                                sym: Ok,
+                                                                span: bytes(484..486),
+                                                            },
+                                                            arguments: PathArguments::None,
+                                                        },
+                                                    ],
+                                                },
+                                            },
+                                            paren_token: Paren,
+                                            args: [
+                                                Expr::Tuple {
+                                                    attrs: [],
+                                                    paren_token: Paren,
+                                                    elems: [],
+                                                },
+                                            ],
+                                        },
+                                        None,
+                                    ),
+                                ],
+                            },
+                        },
+                    ],
+                ),
+            ),
+            semi: None,
+        },
+        Item::Struct {
+            attrs: [
+                Attribute {
+                    pound_token: Pound,
+                    style: AttrStyle::Outer,
+                    bracket_token: Bracket,
+                    meta: Meta::List {
+                        path: Path {
+                            leading_colon: None,
+                            segments: [
+                                PathSegment {
+                                    ident: Ident {
+                                        sym: derive,
+                                        span: bytes(502..508),
+                                    },
+                                    arguments: PathArguments::None,
+                                },
+                            ],
+                        },
+                        delimiter: MacroDelimiter::Paren(
+                            Paren,
+                        ),
+                        tokens: TokenStream [
+                            Ident {
+                                sym: Accounts,
+                                span: bytes(509..517),
+                            },
+                        ],
+                    },
+                },
+            ],
+            vis: Visibility::Public(
+                Pub,
+            ),
+            struct_token: Struct,
+            ident: Ident {
+                sym: InitializeVault,
+                span: bytes(531..546),
+            },
+            generics: Generics {
+                lt_token: Some(
+                    Lt,
+                ),
+                params: [
+                    GenericParam::Lifetime(
+                        LifetimeParam {
+                            attrs: [],
+                            lifetime: Lifetime {
+                                apostrophe: bytes(547..548),
+                                ident: Ident {
+                                    sym: info,
+                                    span: bytes(548..552),
+                                },
+                            },
+                            colon_token: None,
+                            bounds: [],
+                        },
+                    ),
+                ],
+                gt_token: Some(
+                    Gt,
+                ),
+                where_clause: None,
+            },
+            fields: Fields::Named {
+                brace_token: Brace,
+                named: [
+                    Field {
+                        attrs: [
+                            Attribute {
+                                pound_token: Pound,
+                                style: AttrStyle::Outer,
+                                bracket_token: Bracket,
+                                meta: Meta::List {
+                                    path: Path {
+                                        leading_colon: None,
+                                        segments: [
+                                            PathSegment {
+                                                ident: Ident {
+                                                    sym: account,
+                                                    span: bytes(562..569),
+                                                },
+                                                arguments: PathArguments::None,
+                                            },
+                                        ],
+                                    },
+                                    delimiter: MacroDelimiter::Paren(
+                                        Paren,
+                                    ),
+                                    tokens: TokenStream [
+                                        Ident {
+                                            sym: init,
+                                            span: bytes(579..583),
+                                        },
+                                        Punct {
+                                            char: ',',
+                                            spacing: Alone,
+                                            span: bytes(583..584),
+                                        },
+                                        Ident {
+                                            sym: seeds,
+                                            span: bytes(593..598),
+                                        },
+                                        Punct {
+                                            char: '=',
+                                            spacing: Alone,
+                                            span: bytes(599..600),
+                                        },
+                                        Group {
+                                            delimiter: Bracket,
+                                            stream: TokenStream [
+                                                Literal {
+                                                    lit: b"vault",
+                                                    span: bytes(602..610),
+                                                },
+                                            ],
+                                            span: bytes(601..611),
+                                        },
+                                        Punct {
+                                            char: ',',
+                                            spacing: Alone,
+                                            span: bytes(611..612),
+                                        },
+                                        Ident {
+                                            sym: bump,
+                                            span: bytes(621..625),
+                                        },
+                                        Punct {
+                                            char: ',',
+                                            spacing: Alone,
+                                            span: bytes(625..626),
+                                        },
+                                        Ident {
+                                            sym: payer,
+                                            span: bytes(635..640),
+                                        },
+                                        Punct {
+                                            char: '=',
+                                            spacing: Alone,
+                                            span: bytes(641..642),
+                                        },
+                                        Ident {
+                                            sym: payer,
+                                            span: bytes(643..648),
+                                        },
+                                        Punct {
+                                            char: ',',
+                                            spacing: Alone,
+                                            span: bytes(648..649),
+                                        },
+                                        Ident {
+                                            sym: space,
+                                            span: bytes(658..663),
+                                        },
+                                        Punct {
+                                            char: '=',
+                                            spacing: Alone,
+                                            span: bytes(664..665),
+                                        },
+                                        Literal {
+                                            lit: 8,
+                                            span: bytes(666..667),
+                                        },
+                                        Punct {
+                                            char: ',',
+                                            spacing: Alone,
+                                            span: bytes(667..668),
+                                        },
+                                    ],
+                                },
+                            },
+                        ],
+                        vis: Visibility::Public(
+                            Pub,
+                        ),
+                        mutability: FieldMutability::None,
+                        ident: Some(
+                            Ident {
+                                sym: vault,
+                                span: bytes(684..689),
+                            },
+                        ),
+                        colon_token: Some(
+                            Colon,
+                        ),
+                        ty: Type::Path {
+                            qself: None,
+                            path: Path {
+                                leading_colon: None,
+                                segments: [
+                                    PathSegment {
+                                        ident: Ident {
+                                            sym: Account,
+                                            span: bytes(691..698),
+                                        },
+                                        arguments: PathArguments::AngleBracketed {
+                                            colon2_token: None,
+                                            lt_token: Lt,
+                                            args: [
+                                                GenericArgument::Lifetime(
+                                                    Lifetime {
+                                                        apostrophe: bytes(699..700),
+                                                        ident: Ident {
+                                                            sym: info,
+                                                            span: bytes(700..704),
+                                                        },
+                                                    },
+                                                ),
+                                                Comma,
+                                                GenericArgument::Type(
+                                                    Type::Path {
+                                                        qself: None,
+                                                        path: Path {
+                                                            leading_colon: None,
+                                                            segments: [
+                                                                PathSegment {
+                                                                    ident: Ident {
+                                                                        sym: VaultAccount,
+                                                                        span: bytes(706..718),
+                                                                    },
+                                                                    arguments: PathArguments::None,
+                                                                },
+                                                            ],
+                                                        },
+                                                    },
+                                                ),
+                                            ],
+                                            gt_token: Gt,
+                                        },
+                                    },
+                                ],
+                            },
+                        },
+                    },
+                    Comma,
+                    Field {
+                        attrs: [
+                            Attribute {
+                                pound_token: Pound,
+                                style: AttrStyle::Outer,
+                                bracket_token: Bracket,
+                                meta: Meta::List {
+                                    path: Path {
+                                        leading_colon: None,
+                                        segments: [
+                                            PathSegment {
+                                                ident: Ident {
+                                                    sym: account,
+                                                    span: bytes(727..734),
+                                                },
+                                                arguments: PathArguments::None,
+                                            },
+                                        ],
+                                    },
+                                    delimiter: MacroDelimiter::Paren(
+                                        Paren,
+                                    ),
+                                    tokens: TokenStream [
+                                        Ident {
+                                            sym: mut,
+                                            span: bytes(735..738),
+                                        },
+                                    ],
+                                },
+                            },
+                        ],
+                        vis: Visibility::Public(
+                            Pub,
+                        ),
+                        mutability: FieldMutability::None,
+                        ident: Some(
+                            Ident {
+                                sym: payer,
+                                span: bytes(749..754),
+                            },
+                        ),
+                        colon_token: Some(
+                            Colon,
+                        ),
+                        ty: Type::Path {
+                            qself: None,
+                            path: Path {
+                                leading_colon: None,
+                                segments: [
+                                    PathSegment {
+                                        ident: Ident {
+                                            sym: Signer,
+                                            span: bytes(756..762),
+                                        },
+                                        arguments: PathArguments::AngleBracketed {
+                                            colon2_token: None,
+                                            lt_token: Lt,
+                                            args: [
+                                                GenericArgument::Lifetime(
+                                                    Lifetime {
+                                                        apostrophe: bytes(763..764),
+                                                        ident: Ident {
+                                                            sym: info,
+                                                            span: bytes(764..768),
+                                                        },
+                                                    },
+                                                ),
+                                            ],
+                                            gt_token: Gt,
+                                        },
+                                    },
+                                ],
+                            },
+                        },
+                    },
+                    Comma,
+                    Field {
+                        attrs: [],
+                        vis: Visibility::Public(
+                            Pub,
+                        ),
+                        mutability: FieldMutability::None,
+                        ident: Some(
+                            Ident {
+                                sym: system_program,
+                                span: bytes(779..793),
+                            },
+                        ),
+                        colon_token: Some(
+                            Colon,
+                        ),
+                        ty: Type::Path {
+                            qself: None,
+                            path: Path {
+                                leading_colon: None,
+                                segments: [
+                                    PathSegment {
+                                        ident: Ident {
+                                            sym: Program,
+                                            span: bytes(795..802),
+                                        },
+                                        arguments: PathArguments::AngleBracketed {
+                                            colon2_token: None,
+                                            lt_token: Lt,
+                                            args: [
+                                                GenericArgument::Lifetime(
+                                                    Lifetime {
+                                                        apostrophe: bytes(803..804),
+                                                        ident: Ident {
+                                                            sym: info,
+                                                            span: bytes(804..808),
+                                                        },
+                                                    },
+                                                ),
+                                                Comma,
+                                                GenericArgument::Type(
+                                                    Type::Path {
+                                                        qself: None,
+                                                        path: Path {
+                                                            leading_colon: None,
+                                                            segments: [
+                                                                PathSegment {
+                                                                    ident: Ident {
+                                                                        sym: System,
+                                                                        span: bytes(810..816),
+                                                                    },
+                                                                    arguments: PathArguments::None,
+                                                                },
+                                                            ],
+                                                        },
+                                                    },
+                                                ),
+                                            ],
+                                            gt_token: Gt,
+                                        },
+                                    },
+                                ],
+                            },
+                        },
+                    },
+                    Comma,
+                ],
+            },
+            semi_token: None,
+        },
+    ],
+}

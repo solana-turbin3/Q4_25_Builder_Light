@@ -1,0 +1,767 @@
+{
+  "items": [
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "anchor_lang",
+            "tree": {
+              "path": {
+                "ident": "prelude",
+                "tree": "*"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "use": {
+        "tree": {
+          "path": {
+            "ident": "anchor_spl",
+            "tree": {
+              "group": [
+                {
+                  "path": {
+                    "ident": "associated_token",
+                    "tree": {
+                      "ident": "AssociatedToken"
+                    }
+                  }
+                },
+                {
+                  "path": {
+                    "ident": "token_interface",
+                    "tree": {
+                      "group": [
+                        {
+                          "ident": "transfer_checked"
+                        },
+                        {
+                          "ident": "Mint"
+                        },
+                        {
+                          "ident": "TokenAccount"
+                        },
+                        {
+                          "ident": "TokenInterface"
+                        },
+                        {
+                          "ident": "TransferChecked"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "mod": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "path": {
+                "segments": [
+                  {
+                    "ident": "program"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "anchor_escrow_q4_25",
+        "content": [
+          {
+            "fn": {
+              "vis": "pub",
+              "ident": "init_escrow",
+              "inputs": [
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "ctx"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "Context",
+                            "arguments": {
+                              "angle_bracketed": {
+                                "args": [
+                                  {
+                                    "type": {
+                                      "path": {
+                                        "segments": [
+                                          {
+                                            "ident": "Make"
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "seed"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "u64"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "deposit"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "u64"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                {
+                  "typed": {
+                    "pat": {
+                      "ident": {
+                        "ident": "receive"
+                      }
+                    },
+                    "ty": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "u64"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              ],
+              "output": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Result",
+                      "arguments": {
+                        "angle_bracketed": {
+                          "args": [
+                            {
+                              "type": {
+                                "tuple": {
+                                  "elems": []
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "stmts": [
+                {
+                  "expr": [
+                    {
+                      "try": {
+                        "expr": {
+                          "method_call": {
+                            "receiver": {
+                              "field": {
+                                "base": {
+                                  "path": {
+                                    "segments": [
+                                      {
+                                        "ident": "ctx"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "ident": "accounts"
+                              }
+                            },
+                            "method": "deposit",
+                            "args": [
+                              {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "deposit"
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    true
+                  ]
+                },
+                {
+                  "expr": [
+                    {
+                      "method_call": {
+                        "receiver": {
+                          "field": {
+                            "base": {
+                              "path": {
+                                "segments": [
+                                  {
+                                    "ident": "ctx"
+                                  }
+                                ]
+                              }
+                            },
+                            "ident": "accounts"
+                          }
+                        },
+                        "method": "init_escrow",
+                        "args": [
+                          {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "seed"
+                                }
+                              ]
+                            }
+                          },
+                          {
+                            "path": {
+                              "segments": [
+                                {
+                                  "ident": "receive"
+                                }
+                              ]
+                            }
+                          },
+                          {
+                            "reference": {
+                              "expr": {
+                                "field": {
+                                  "base": {
+                                    "path": {
+                                      "segments": [
+                                        {
+                                          "ident": "ctx"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "ident": "bumps"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    false
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "struct": {
+        "attrs": [
+          {
+            "style": "outer",
+            "meta": {
+              "list": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "derive"
+                    }
+                  ]
+                },
+                "delimiter": "paren",
+                "tokens": [
+                  {
+                    "ident": "Accounts"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "vis": "pub",
+        "ident": "OpenEscrowAccount",
+        "generics": {
+          "params": [
+            {
+              "lifetime": {
+                "lifetime": "info",
+                "bounds": []
+              }
+            }
+          ]
+        },
+        "fields": {
+          "named": [
+            {
+              "attrs": [
+                {
+                  "style": "outer",
+                  "meta": {
+                    "list": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "account"
+                          }
+                        ]
+                      },
+                      "delimiter": "paren",
+                      "tokens": [
+                        {
+                          "ident": "mut"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ],
+              "vis": "pub",
+              "ident": "maker",
+              "colon_token": true,
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Signer",
+                      "arguments": {
+                        "angle_bracketed": {
+                          "args": [
+                            {
+                              "lifetime": "info"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "attrs": [
+                {
+                  "style": "outer",
+                  "meta": {
+                    "list": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "accounts"
+                          }
+                        ]
+                      },
+                      "delimiter": "paren",
+                      "tokens": [
+                        {
+                          "ident": "seeds"
+                        },
+                        {
+                          "punct": {
+                            "op": "=",
+                            "spacing": "alone"
+                          }
+                        },
+                        {
+                          "group": {
+                            "delimiter": "bracket",
+                            "stream": [
+                              {
+                                "lit": "b\"pool\""
+                              },
+                              {
+                                "punct": {
+                                  "op": ".",
+                                  "spacing": "alone"
+                                }
+                              },
+                              {
+                                "ident": "as_ref"
+                              },
+                              {
+                                "group": {
+                                  "delimiter": "parenthesis",
+                                  "stream": []
+                                }
+                              },
+                              {
+                                "punct": {
+                                  "op": ",",
+                                  "spacing": "alone"
+                                }
+                              },
+                              {
+                                "ident": "mint"
+                              },
+                              {
+                                "punct": {
+                                  "op": ".",
+                                  "spacing": "alone"
+                                }
+                              },
+                              {
+                                "ident": "key"
+                              },
+                              {
+                                "punct": {
+                                  "op": ".",
+                                  "spacing": "alone"
+                                }
+                              },
+                              {
+                                "ident": "as_ref"
+                              },
+                              {
+                                "group": {
+                                  "delimiter": "parenthesis",
+                                  "stream": []
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "punct": {
+                            "op": ",",
+                            "spacing": "alone"
+                          }
+                        },
+                        {
+                          "ident": "bump"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ],
+              "vis": "pub",
+              "ident": "pool",
+              "colon_token": true,
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Account",
+                      "arguments": {
+                        "angle_bracketed": {
+                          "args": [
+                            {
+                              "lifetime": "info"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "attrs": [
+                {
+                  "style": "outer",
+                  "meta": {
+                    "list": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "account"
+                          }
+                        ]
+                      },
+                      "delimiter": "paren",
+                      "tokens": [
+                        {
+                          "ident": "mint"
+                        },
+                        {
+                          "punct": {
+                            "op": ":",
+                            "spacing": "joint"
+                          }
+                        },
+                        {
+                          "punct": {
+                            "op": ":",
+                            "spacing": "alone"
+                          }
+                        },
+                        {
+                          "ident": "token_program"
+                        },
+                        {
+                          "punct": {
+                            "op": "=",
+                            "spacing": "alone"
+                          }
+                        },
+                        {
+                          "ident": "token_program"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ],
+              "vis": "pub",
+              "ident": "mint",
+              "colon_token": true,
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "InterfaceAccount",
+                      "arguments": {
+                        "angle_bracketed": {
+                          "args": [
+                            {
+                              "lifetime": "info"
+                            },
+                            {
+                              "type": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "Mint"
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "attrs": [
+                {
+                  "style": "outer",
+                  "meta": {
+                    "list": {
+                      "path": {
+                        "segments": [
+                          {
+                            "ident": "accounts"
+                          }
+                        ]
+                      },
+                      "delimiter": "paren",
+                      "tokens": [
+                        {
+                          "ident": "init"
+                        },
+                        {
+                          "punct": {
+                            "op": ",",
+                            "spacing": "alone"
+                          }
+                        },
+                        {
+                          "ident": "payer"
+                        },
+                        {
+                          "punct": {
+                            "op": "=",
+                            "spacing": "alone"
+                          }
+                        },
+                        {
+                          "ident": "admin"
+                        },
+                        {
+                          "punct": {
+                            "op": ",",
+                            "spacing": "alone"
+                          }
+                        },
+                        {
+                          "ident": "associated_token"
+                        },
+                        {
+                          "punct": {
+                            "op": ":",
+                            "spacing": "joint"
+                          }
+                        },
+                        {
+                          "punct": {
+                            "op": ":",
+                            "spacing": "alone"
+                          }
+                        },
+                        {
+                          "ident": "mint"
+                        },
+                        {
+                          "punct": {
+                            "op": "=",
+                            "spacing": "alone"
+                          }
+                        },
+                        {
+                          "ident": "mint"
+                        },
+                        {
+                          "punct": {
+                            "op": ",",
+                            "spacing": "alone"
+                          }
+                        },
+                        {
+                          "ident": "associated_token"
+                        },
+                        {
+                          "punct": {
+                            "op": ":",
+                            "spacing": "joint"
+                          }
+                        },
+                        {
+                          "punct": {
+                            "op": ":",
+                            "spacing": "alone"
+                          }
+                        },
+                        {
+                          "ident": "authority"
+                        },
+                        {
+                          "punct": {
+                            "op": ":",
+                            "spacing": "alone"
+                          }
+                        },
+                        {
+                          "ident": "pool"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ],
+              "vis": "pub",
+              "ident": "token_account",
+              "colon_token": true,
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Account",
+                      "arguments": {
+                        "angle_bracketed": {
+                          "args": [
+                            {
+                              "lifetime": "info"
+                            },
+                            {
+                              "type": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "TokenAccount"
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "vis": "pub",
+              "ident": "associated_token_program",
+              "colon_token": true,
+              "ty": {
+                "path": {
+                  "segments": [
+                    {
+                      "ident": "Program",
+                      "arguments": {
+                        "angle_bracketed": {
+                          "args": [
+                            {
+                              "lifetime": "info"
+                            },
+                            {
+                              "type": {
+                                "path": {
+                                  "segments": [
+                                    {
+                                      "ident": "AssociatedToken"
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+- Started with a simple line counter program, most analyzers have this. Counts comments, white spaces and actual code
+- Can successfully parse any rust program to an AST. Its fairly easy using syn crate
+- Can output the tree into an external .json file, need to understand the tree structure, a lot of fields dont seem useful for program analysis
+- Wrote a simple function to traverse the tree and output all accounts, functions, structs etc, just to understand the tree structure
+- discovered tree-sitter, can be used for regex type rules and discoveries (not useful now, but saving for later (treesitter-ez.rs))
+- for a normal-complex program, the AST can be up to ~10k lines, need to normalize and extract only relevant data (its also very hard to read currently)
+
+- Parsing done, now to normalizing and extracting, starting with #derive(accounts), the plan is to create a struct that for each account (i.e signers)
+  then loop through the derive acct struct and extract info and form a struct for each account, for some accounts most fields would be default i.e Option<>
+- 

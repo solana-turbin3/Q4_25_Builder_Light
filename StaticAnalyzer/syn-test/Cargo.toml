@@ -1,0 +1,28 @@
+[package]
+name = "syn-test"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+# syn = { version = "2.0", features = ["full", "extra-traits"] }
+quote = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+rusty-ast = "0.0.8"
+tree-sitter = "0.25.10"
+tree-sitter-rust = "0.24.0"
+syn-serde = { version = "0.3", features = ["json"] }
+
+# Rust syntax analysis
+# full => full Rust features
+# parsing => parse Rust code as text
+# extra-traits => Debug, Eq traits for AST types
+# syn-serde => Serialize/Deserialize for AST types
+syn = { version = "2.0.109", features = ["full", "extra-traits", "visit", "parsing"] }
+
+# Anchor semantic analysis (with syn 1.0 compatibility)
+anchor-syn = "0.32.1"
+log = "0.4"
+env_logger = "0.11.8"
+anyhow = "1.0"
+walkdir = "2.3"

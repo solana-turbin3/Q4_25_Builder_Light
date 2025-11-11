@@ -1,0 +1,9 @@
+{
+  "functions": [],
+  "structs": [
+    "VaultAccount",
+    "Bet",
+    "ClaimWin",
+    "InitializeVault"
+  ]
+}
