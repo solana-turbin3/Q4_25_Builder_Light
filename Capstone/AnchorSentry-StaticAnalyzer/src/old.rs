@@ -359,9 +359,9 @@ pub fn normalize_struct_field(s: &syn::ItemStruct) -> Vec<NormalizedAccountField
                     .trim_end_matches(")]")
                     .trim();
                 //too stressful for now
-                // if attr_str_trimmed.contains("seeds"){
-                //     continue;
-                // }
+                if attr_str_trimmed.contains("seeds"){
+                    continue;
+                }
                 for token in attr_str_trimmed.split(',') {
                     let parts: Vec<&str> = token.split('=').collect();
 
@@ -426,7 +426,6 @@ pub fn rules__missing_init_if_needed(s: &NormalizedAccountStruct, r: &mut Report
 //✅
 pub fn rules__wrong_space_assignment(s: &NormalizedAccountStruct, v: &Vec<ItemStruct>, r: &mut Report) {
     for field in &s.fields {
-        println!("{:?}",field);
         //for formatting remember to add prints liek checking for space err in field.ident...
         if field.contains_attr("space") {
             let account_space = extract_space(&field);
@@ -518,7 +517,7 @@ pub fn rules__division_by_variable(ast: &syn::File, r: &mut Report) {
 }
 
 pub fn main() -> Result<()>{
-    let path = Path::new("src/program.rs");
+    let path = Path::new("src/make.rs");
 
     let txt_path = Path::new("escrow-ast-raw.txt");
 

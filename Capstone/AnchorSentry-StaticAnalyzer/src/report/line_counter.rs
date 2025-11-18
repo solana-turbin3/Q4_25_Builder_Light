@@ -1,15 +1,3 @@
-use syn::{Expr, Item};
-// use std::{fs, io, path::Path};
-use rusty_ast::{AstJson, JsonVisitor, TextVisitor, parse_rust_source};
-use serde::Serialize;
-use syn::visit::Visit;
-
-// use anyhow::{Context, Ok, Result};
-use log::{error, info};
-use walkdir::WalkDir;
-
-use tree_sitter::{InputEdit, Language, Parser, Point};
-
 use std::fs::File;
 use std::io::Read;
 use std::path::Path;

@@ -12,6 +12,9 @@ rusty-ast = "0.0.8"
 tree-sitter = "0.25.10"
 tree-sitter-rust = "0.24.0"
 syn-serde = { version = "0.3", features = ["json"] }
+evalexpr = "13.0.0"
+chrono = { version = "0.4", features = ["clock"] }
+
 
 # Rust syntax analysis
 # full => full Rust features
