@@ -277,6 +277,7 @@ pub fn normalize_program(ast: &syn::File, r: &mut Report) -> Result<()> {
         // println!("{:?}", a);
         rules__missing_init_if_needed(&a, r);
         rules__wrong_space_assignment(&a, &storage_structs, r);
+        rules__missing_signer_check(&a, r);
         // for f in a.fields{
         //     let space = extract_space(f);
         //     for s in &storage_structs {
@@ -403,6 +404,25 @@ pub fn normalize_struct_field(s: &syn::ItemStruct) -> Vec<NormalizedAccountField
 }
 
 
+pub fn rules__missing_signer_check(s: &NormalizedAccountStruct, r: &mut Report) {
+    for field in &s.fields {
+        if field.base_type == "AccountInfo" || field.base_type == "UncheckedAccount" {
+            // println!("{:?}", field);
+            if field.has_bool_attribute("constraint") || field.has_bool_attribute("signer") {
+                continue;
+            }
+            r.add(Finding::PossibleMissingAccountVerification(
+            PossibleMissingAccountVerificationFinding {
+                rule: &RULE_MISSING_ACCOUNT_VERIFICATION,
+                line: field.line,
+                account_name: field.name.clone(),
+                field_type: field.base_type.clone(),
+            }
+        ));
+        }
+    }
+}
+
 //✅
 pub fn rules__missing_init_if_needed(s: &NormalizedAccountStruct, r: &mut Report) {
     // println!("Here");
@@ -426,12 +446,12 @@ pub fn rules__missing_init_if_needed(s: &NormalizedAccountStruct, r: &mut Report
 //✅
 pub fn rules__wrong_space_assignment(s: &NormalizedAccountStruct, v: &Vec<ItemStruct>, r: &mut Report) {
     for field in &s.fields {
-        println!("{:?}",field);
+        // println!("{:?}",field);
         //for formatting remember to add prints liek checking for space err in field.ident...
         if field.contains_attr("space") {
             let account_space = extract_space(&field);
             let account_data_type = field.generic_args.get(1);
-            println!("{:?}", account_data_type.unwrap());
+            // println!("{:?}", account_data_type.unwrap());
 
             for item in v {
                 if item.ident.to_string() == *account_data_type.unwrap() {

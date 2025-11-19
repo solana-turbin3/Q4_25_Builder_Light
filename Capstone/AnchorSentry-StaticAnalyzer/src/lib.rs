@@ -32,6 +32,7 @@ pub fn run_analysis(path: &str) -> Result<()> {
         // println!("{:?}", a);
         rules_missing_init_if_needed(&a, &mut r);
         rules_wrong_space_assignment(&a, &storage_structs, &mut r);
+        rules_missing_signer_check(&a, &mut r);
         
     }
     rules_fn_missing_instruction_args(&accounts_with_instructions, &functions_args, &mut r);

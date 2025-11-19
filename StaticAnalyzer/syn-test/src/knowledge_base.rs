@@ -1,6 +1,6 @@
 use serde::Serialize;
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, PartialOrd, Ord)]
 pub enum Severity {
     High,
     Medium,
@@ -112,6 +112,26 @@ pub static RULE_POSSIBLE_DIVISION_BY_ZERO: RuleMetadata = RuleMetadata {
     ),
 };
 
+pub static RULE_MISSING_ACCOUNT_VERIFICATION: RuleMetadata = RuleMetadata {
+    code: "L-002",
+    title: "Unconstrained account may require additional validation",
+    description:
+        "AccountInfo or UncheckedAccount structs represent raw Solana accounts with no automatic \
+        deserialization or built-in security checks. When such fields appear without explicit constraints, the \
+        program may unintentionally accept arbitrary accounts provided by the caller. While some program logic \
+        may perform manual validation, the absence of explicit constraints at the account-validation layer increases \
+        risk and complicates audits.",
+    severity: Severity::Low,
+    recommendation:
+        "Review this account field to determine whether a signer constraint or additional validation is required. \
+        If the account represents an authority or must be controlled by a specific party, explicitly annotate it with \
+        #[account(constraint = ...)], or other relevant Anchor constraints. If the field is intentionally \
+        unconstrained, consider documenting its expected behavior to reduce ambiguity for auditors.",
+    additional_links: Some(
+        "https://www.anchor-lang.com/docs/references/account-types"
+    ),
+};
+
 
 
 #[derive(Debug, Clone)]
@@ -148,11 +168,20 @@ pub struct PossibleDivisionByZeroFinding {
     pub divisor: String,
 }
 
+#[derive(Debug, Clone)]
+pub struct PossibleMissingAccountVerificationFinding {
+    pub rule: &'static RuleMetadata,
+    pub line: usize,
+    pub account_name: String,
+    pub field_type: String,
+}
+
 /// Unified enum so the report system can store all findings
 #[derive(Debug, Clone)]
 pub enum Finding {
     MissingInitIfNeeded(MissingInitIfNeededFinding),
     WrongSpaceAssignment(WrongSpaceAssignmentFinding),
     MissingRequiredInstructionArgument(MissingRequiredInstructionArgumentFinding),
-    PossibleDivisionByZero(PossibleDivisionByZeroFinding)
+    PossibleDivisionByZero(PossibleDivisionByZeroFinding),
+    PossibleMissingAccountVerification(PossibleMissingAccountVerificationFinding)
 }

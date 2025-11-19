@@ -113,6 +113,9 @@ pub mod sample_program {
 pub struct Make<'info> {
     #[account(mut)]
     pub maker: Signer<'info>,
+    
+    #[account(mut)]
+    pub authority: AccountInfo<'info>,
 
     #[account(mint::token_program = token_program)]
     pub mint_a: InterfaceAccount<'info, Mint>,
@@ -140,7 +143,7 @@ pub struct Make<'info> {
         init,
         payer = maker,
         associated_token::mint = mint_a,
-        associated_token::authority = escrow,
+        associated_token::authority = authority,
     )]
     pub vault: InterfaceAccount<'info, TokenAccount>,
 

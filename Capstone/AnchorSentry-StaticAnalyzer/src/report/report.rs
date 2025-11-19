@@ -1,3 +1,5 @@
+use crate::report::knowledge_base::PossibleMissingAccountVerificationFinding;
+
 use super::knowledge_base::{
     Finding,
     MissingInitIfNeededFinding,
@@ -35,6 +37,16 @@ fn sev_icon(sev: Severity) -> &'static str {
         Severity::High => "⚠",
         Severity::Medium => "⚠",
         Severity::Low => "⚠",
+    }
+}
+
+fn finding_severity(f: &Finding) -> Severity {
+    match f {
+        Finding::MissingInitIfNeeded(x) => x.rule.severity,
+        Finding::WrongSpaceAssignment(x) => x.rule.severity,
+        Finding::MissingRequiredInstructionArgument(x) => x.rule.severity,
+        Finding::PossibleDivisionByZero(x) => x.rule.severity,
+        Finding::PossibleMissingAccountVerification(x) => x.rule.severity
     }
 }
 
@@ -111,6 +123,7 @@ impl Report {
                 Finding::WrongSpaceAssignment(x) => x.rule.severity,
                 Finding::MissingRequiredInstructionArgument(x) => x.rule.severity,
                 Finding::PossibleDivisionByZero(x) => x.rule.severity,
+                Finding::PossibleMissingAccountVerification(x) => x.rule.severity
             };
 
             match sev {
@@ -138,7 +151,14 @@ impl Report {
     }
 
     fn print_findings(&self) {
-        for f in &self.findings {
+
+        let mut sorted_findings = self.findings.clone();
+
+        sorted_findings.sort_by(|a, b| {
+            finding_severity(a).cmp(&finding_severity(b))
+        });
+
+        for f in &sorted_findings {
             match f {
                 Finding::MissingInitIfNeeded(x) => self.print_missing_init_if_needed(x),
                 Finding::WrongSpaceAssignment(x) => self.print_wrong_space_assignment(x),
@@ -146,6 +166,7 @@ impl Report {
                     self.print_missing_instruction_arg(x)
                 }
                 Finding::PossibleDivisionByZero(x) => self.print_division_by_zero(x),
+                Finding::PossibleMissingAccountVerification(x) => self.print_missing_account_verification(x)
             }
         }
     }
@@ -222,6 +243,29 @@ impl Report {
 
         println!("  {BOLD}Function:{RESET} {}", x.fn_name);
         println!("  {BOLD}Divisor Variable:{RESET} {}", x.divisor);
+        println!("  {BOLD}Line:{RESET} {}", x.line);
+
+        println!("\n  {BOLD}Description:{RESET}");
+        println!("    {}", x.rule.description);
+
+        println!("\n  {BOLD}Recommendation:{RESET}");
+        println!("    {}", x.rule.recommendation);
+
+        if let Some(links) = x.rule.additional_links {
+            println!("\n  {BOLD}Resources:{RESET}");
+            for link in links.split('\n') {
+                println!("    🔗 {}", link);
+            }
+        }
+
+        println!();
+    }
+
+    fn print_missing_account_verification(&self, x: &PossibleMissingAccountVerificationFinding) {
+        Self::header(x.rule.code, x.rule.title, x.rule.severity);
+
+        println!("  {BOLD}Account:{RESET} {}", x.account_name);
+        println!("  {BOLD}Type:{RESET} {}", x.field_type);
         println!("  {BOLD}Line:{RESET} {}", x.line);
 
         println!("\n  {BOLD}Description:{RESET}");
