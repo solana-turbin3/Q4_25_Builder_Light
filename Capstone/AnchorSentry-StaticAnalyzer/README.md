@@ -40,3 +40,10 @@ Finding::PossibleMissingAccountVerification
 
 ## Architecture
 ![Architecture Diagram](arch.png)
+
+
+## Sample-Reports
+![Report-1](sample-reports/report-1.png)
+![Report-2](sample-reports/report-2.png)
+![Report-3](sample-reports/report-3.png)
+![Report-4](sample-reports/report-4.png)

@@ -7,7 +7,7 @@ pub fn rules_fn_missing_instruction_args(v: &Vec<AccountInstructions>, f: &Vec<N
         let name = field.ctx_name.clone();
         for func in f {
             if func.context == name {
-                println!("fn and ins match");
+                // println!("fn and ins match");
                 for required_arg in &field.args {
                 let exists = func.args.iter().any(|arg|arg.name == required_arg.name && arg.ty == required_arg.ty);
 

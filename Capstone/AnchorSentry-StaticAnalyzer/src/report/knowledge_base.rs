@@ -37,8 +37,12 @@ pub static RULE_MISSING_INIT_IF_NEEDED: RuleMetadata = RuleMetadata {
          idempotent behavior even when an ATA already exists. Always prefer `init_if_needed` \
          unless you have a strict requirement that the account must be newly created.",
     additional_links: Some(
-        "https://www.anchor-lang.com/docs/associated-accounts\n\
-         https://solana-labs.github.io/solana-program-library/associated-token-account"
+        "https://www.anchor-lang.com/docs/references/account-constraints#accountinit_if_needed\n\
+         https://medium.com/@calc1f4r/init-vs-init-if-needed-a-deep-dive-d33fe59e4de5\n\
+         https://rareskills.io/post/init-if-needed-anchor\n\
+         https://solodit.cyfrin.io/issues/m-02-dos-of-createbondingcurve-pashov-audit-group-none-pumpscience_2024-12-24-markdown_\n\
+         https://solodit.cyfrin.io/issues/attacker-can-create-token-account-for-nft-position-to-cause-deposit-dos-cantina-none-olas-pdf\n\
+         https://solodit.cyfrin.io/issues/ability-to-initialize-multiple-times-ottersec-none-composable-vaults-pdf",         
     ),
 };
 
@@ -60,8 +64,11 @@ pub static RULE_WRONG_SPACE_ASSIGNMENT: RuleMetadata = RuleMetadata {
          reflect the correct size. Ensure that every field is included in the calculation and \
          account for all padding, discriminators, and aggregate data types.",
     additional_links: Some(
-        "https://book.anchor-lang.com/chapter_3/space.html\n\
-         https://docs.rs/anchor-lang/latest/anchor_lang/attr.account.html"
+        "https://www.anchor-lang.com/docs/references/space\n\
+         https://rareskills.io/post/solana-initialize-account\n\
+         https://www.sec3.dev/blog/all-about-anchor-account-size\n\
+         https://solodit.cyfrin.io/issues/improper-space-allocation-for-pda-initialization-quantstamp-exceed-finance-liquid-staking-early-purchase-markdown\n\
+         https://solodit.cyfrin.io/issues/insufficient-vector-space-allocation-ottersec-none-polkastarter-pdf"
     ),
 };
 
@@ -80,11 +87,12 @@ pub static RULE_MISSING_REQUIRED_INSTRUCTION_ARGUMENT: RuleMetadata = RuleMetada
          instruction parameters cannot rely on deterministic inputs.",
     severity: Severity::Medium,
     recommendation:
-        "Ensure the function signature includes **all** arguments declared inside \
+        "Ensure the function signature includes all arguments declared inside \
          `#[instruction(...)]`. The context definition and function parameters must match \
          exactly so callers provide the expected values.",
     additional_links: Some(
-        "https://www.anchor-lang.com/docs/the-accounts-attribute"
+        "https://www.quicknode.com/guides/solana-development/anchor/how-to-use-constraints-in-anchor#utilizing-instruction-data-in-constraints\n\
+        https://solana.stackexchange.com/questions/5946/what-is-anchor-instruction-macro"
     ),
 };
 
@@ -109,8 +117,12 @@ pub static RULE_POSSIBLE_DIVISION_BY_ZERO: RuleMetadata = RuleMetadata {
          Reject or sanitize invalid inputs. For performance and safety, perform this validation \
          as early as possible in the function logic, and document expected input constraints.",
     additional_links: Some(
-        "https://solana.com/developers/guides/programs/errors\n\
-         https://book.anchor-lang.com/chapter_2/errors.html"
+        "https://exvul.com/rust-smart-contract-security-guide-in-solana/\n\
+         https://rareskills.io/post/rust-arithmetic-operators\n\
+         https://www.sec3.dev/blog/understanding-arithmetic-overflow-underflows-in-rust-and-solana-smart-contracts\n\
+         https://www.helius.dev/blog/solana-arithmetic\n\
+         https://solodit.cyfrin.io/issues/risk-of-division-by-zero-ottersec-none-switchboard-off-chain-pdf\n\
+         https://solodit.cyfrin.io/issues/h-07-user-cannot-claim-rewards-or-close_position-due-to-vulnerable-division-by-zero-handling-code4rena-mantra-mantra-git"
     ),
 };
 
@@ -134,7 +146,12 @@ pub static RULE_MISSING_ACCOUNT_VERIFICATION: RuleMetadata = RuleMetadata {
         #[account(constraint = ...)], or other relevant Anchor constraints. If the field is intentionally \
         unconstrained, consider documenting its expected behavior to reduce ambiguity for auditors.",
     additional_links: Some(
-        "https://www.anchor-lang.com/docs/references/account-types"
+        "https://www.anchor-lang.com/docs/references/account-constraints\n\
+        https://solana.com/pt/developers/courses/program-security/signer-auth\n\
+        https://syedashar1.medium.com/program-security-in-anchor-framework-solana-smart-contract-security-b619e1e4d939\n\
+        https://solodit.cyfrin.io/issues/missing-signer-check-ottersec-none-definitive-pdf\n\
+        https://solodit.cyfrin.io/issues/m-01-any-wallet-can-self-assign-as-super_admin-for-arbitrary-mint-pashov-audit-group-none-pump_2025-06-26-markdown\n\
+        https://solodit.cyfrin.io/issues/m-04-unauthorized-global-and-oracle-state-initialization-pashov-audit-group-none-pump_2025-03-18-markdown"
     ),
 };
 

@@ -200,7 +200,7 @@ impl Report {
         if let Some(links) = x.rule.additional_links {
             println!("\n  {BOLD}Resources:{RESET}");
             for link in links.split('\n') {
-                println!("    🔗 {}", link);
+                println!("     {}", link);
             }
         }
 
@@ -220,6 +220,13 @@ impl Report {
 
         println!("\n  {BOLD}Recommendation:{RESET}");
         println!("    {}", x.rule.recommendation);
+
+        if let Some(links) = x.rule.additional_links {
+            println!("\n  {BOLD}Resources:{RESET}");
+            for link in links.split('\n') {
+                println!("     {}", link);
+            }
+        }
         println!();
     }
 
@@ -235,6 +242,13 @@ impl Report {
 
         println!("\n  {BOLD}Recommendation:{RESET}");
         println!("    {}", x.rule.recommendation);
+
+        if let Some(links) = x.rule.additional_links {
+            println!("\n  {BOLD}Resources:{RESET}");
+            for link in links.split('\n') {
+                println!("     {}", link);
+            }
+        }
         println!();
     }
 
@@ -254,7 +268,7 @@ impl Report {
         if let Some(links) = x.rule.additional_links {
             println!("\n  {BOLD}Resources:{RESET}");
             for link in links.split('\n') {
-                println!("    🔗 {}", link);
+                println!("     {}", link);
             }
         }
 
@@ -277,7 +291,7 @@ impl Report {
         if let Some(links) = x.rule.additional_links {
             println!("\n  {BOLD}Resources:{RESET}");
             for link in links.split('\n') {
-                println!("    🔗 {}", link);
+                println!("     {}", link);
             }
         }
 
